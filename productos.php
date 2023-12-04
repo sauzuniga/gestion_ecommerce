@@ -85,9 +85,10 @@ include('config/connection.php');
                 <h3>Administrador</h3>
             </center>
             <ul class="mt10">
-                <li> <a href="main.php">Inicio</a></li>
+            <li> <a href="main.php">Inicio</a></li>
                 <li> <a href="productos.php">Productos</a></li>
-                <li> <a href="index.php">Salir</a></li>
+                <li> <a href="add-faqs.php">Agregar faqs</a></li>
+                <li> <a href="faqs_clientes.php">Faqs de clientes</a></li>
             </ul>
 
         </div>
@@ -161,7 +162,12 @@ include('config/connection.php');
 						alert("Producto guardado");
 						window.location.reload();
 					}else{
-						alert(response.detail);
+						Swal.fire({
+                       title: "Aviso",
+                       text: response.detail,
+                        icon: "info"
+});
+
 					}
 				}
 
@@ -172,7 +178,7 @@ include('config/connection.php');
     var c = confirm("¿Estás seguro de eliminar el producto de código " + codpro + "?");
     if (c) {
         let fd = new FormData();
-        fd.append('codpro', codpro);  // Cambiado a 'codpro' en lugar de 'codigo'
+        fd.append('codpro', codpro);  
         let request = new XMLHttpRequest();
         request.open('POST', 'api/delete_products.php', true);
         request.onload = function () {
@@ -204,10 +210,10 @@ function edit_products(codpro){
 					document.getElementById("descripcion-e").value=response.product.despro;
 					document.getElementById("precio-e").value=response.product.prepro;
 					document.getElementById("estado-e").value=response.product.estado;
-					document.getElementById("rutimapro").src="../ecommerce/assets/"+response.product.rutimapro;
+					document.getElementById("rutimapro").src="../ecommerce-2.0/assets/"+response.product.rutimapro;
 					document.getElementById("rutimapro-aux").value=response.product.rutimapro;
 					show_modal('modal-producto-edit');
-					//imagen-e
+					
 				}
 			}
 			request.send(fd);

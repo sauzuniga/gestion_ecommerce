@@ -11,7 +11,7 @@
     
     if ($result) {
         $response->state=true;
-        unlink("../../ecommerce/assets/".$rutimapro);
+        unlink("../../ecommerce-2.0/assets/".$rutimapro);
     }else{
         $response->state=false;
         $response->detail="No se puede eliminar el producto";

@@ -17,13 +17,11 @@
 		where codpro=$codpro";
 		$result=mysqli_query($con,$sql);
 		if ($result) {			
-			//recuerda que debes redireccionar al nombre de proyecto correcto
-			// ejm: sistema-ecommerce-master
-			if(move_uploaded_file($_FILES['imagen']['tmp_name'], "../../ecommerce/assets/".$nombre_imagen)){
+			
+			if(move_uploaded_file($_FILES['imagen']['tmp_name'], "../../ecommerce-2.0/assets/".$nombre_imagen)){
 				$response->state=true;
-				//recuerda que debes redireccionar al nombre de proyecto correcto
-				// ejm: sistema-ecommerce-master
-				unlink("../../ecommerce/assets/".$rutimapro);
+				
+				unlink("../../ecommerce-2.0/assets/".$rutimapro);
 			}else{
 				$response->state=false;
 				$response->detail="Hubo un error al cargar la imagen";

@@ -18,15 +18,14 @@
 			$response->detail="Falta la descripcion";
 		}else{
 			if(isset($_FILES['imagen'])){
-				//TU TAREA ES CAPTURAR LA FECHA Y HORA DEL SISTEMA
-				//$nombre_imagen="20201011090730.jpg";
+				
 				$nombre_imagen = date("YmdHis").".jpg";  
 				$sql="INSERT INTO producto (nompro,despro,prepro,estado,rutimapro)
 				VALUES ('$nombre','$descripcion',$precio,$estado,'$nombre_imagen')";
 				$result=mysqli_query($con,$sql);
 				if ($result) {
-					//RECUERDA QUE MUEVE QUE NECESITES MENOS RETORNOS DE DIRECTORIO, es decir el "../"
-					if(move_uploaded_file($_FILES['imagen']['tmp_name'], "../../ecommerce/assets/".$nombre_imagen)){
+					
+					if(move_uploaded_file($_FILES['imagen']['tmp_name'], "../../ecommerce-2.0/assets/".$nombre_imagen)){
 						$response->state=true;
 					}else{
 						$response->state=false;

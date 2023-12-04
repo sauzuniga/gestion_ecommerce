@@ -1,2 +1,2 @@
 <?php
-$con=mysqli_connect('localhost','root','usbw','sistema_ecommerce');
+$con=mysqli_connect('localhost','root','','sistema_ecommerce');

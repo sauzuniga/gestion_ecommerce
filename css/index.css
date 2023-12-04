@@ -12,6 +12,11 @@ button{
 	padding: 10px;
 	cursor: pointer;
 }
+
+	.main-container {
+	  flex-direction: row;
+	}
+  
 .main-container{
 	display: flex;
 	width: 100%;
@@ -50,10 +55,14 @@ button{
 	height: 100%;
 	padding: 10px;
 }
+
+
 table{
 	width: 100%;
 	border-collapse: collapse;
+	font-size: 14px;
 }
+
 th,td{
 	padding: 5px;
 	border: 1px solid #666;
@@ -75,6 +84,7 @@ th{
 	width: 30px;
 	padding: 5px;
 }
+
 .modal{
 	position: fixed;
 	top: 0;
