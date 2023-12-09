@@ -1,6 +1,6 @@
 <?php
     
-    $conn = new PDO("mysql:host=localhost;dbname=sistema_ecommerce", "root", "");
+    $conn = new PDO("mysql:host=localhost;dbname=sistema_ecommerce", "root", "usbw");
     $sql = "SELECT * FROM faqs WHERE id = ?";
     $statement = $conn->prepare($sql);
     $statement->execute([

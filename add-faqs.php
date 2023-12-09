@@ -1,10 +1,20 @@
 <?php
+/**
+ * Página para la administración de preguntas frecuentes (FAQs).
+ *
+ * Este archivo gestiona la creación de la tabla de FAQs, la inserción de nuevas FAQs,
+ * y la visualización de las FAQs existentes. También permite la edición y eliminación de FAQs.
+ *
+ * @file
+ */
     
-    $conn = new PDO("mysql:host=localhost;dbname=sistema_ecommerce", "root", "");
+    $conn = new PDO("mysql:host=localhost;dbname=sistema_ecommerce", "root", "usbw");
     
     if (isset($_POST["submit"]))
     {
-       
+/**
+ * Sección para la creación de la tabla de FAQs si no existe.
+ */
         $sql = "CREATE TABLE IF NOT EXISTS faqs (
             id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
             Pregunta TEXT NULL,
@@ -13,7 +23,7 @@
         )";
         $statement = $conn->prepare($sql);
         $statement->execute();
-        
+        // Insertar una nueva FAQ
         $sql = "INSERT INTO faqs (Pregunta, Respuesta) VALUES (?, ?)";
         $statement = $conn->prepare($sql);
         $statement->execute([
@@ -21,7 +31,9 @@
             $_POST["answer"]
         ]);
     }
-    
+/**
+ * Obtener todas las FAQs ordenadas por ID de forma descendente.
+ */
     $sql = "SELECT * FROM faqs ORDER BY id DESC";
     $statement = $conn->prepare($sql);
     $statement->execute();
@@ -51,28 +63,28 @@
     <div class="row">
         <div class="offset-md-3 col-md-6">
             <h1 class="text-center">Add FAQ</h1>
-            <!-- for to add FAQ -->
+          
             <form method="POST" action="add-faqs.php">
-                <!-- question -->
+              
                 <div class="form-group">
                     <label>Enter Question</label>
                     <input type="text" name="question" class="form-control" required />
                 </div>
-                <!-- answer -->
+                
                 <div class="form-group">
                     <label>Enter Answer</label>
                     <textarea name="answer" id="answer" class="form-control" required></textarea>
                 </div>
-                <!-- submit button -->
+             
                 <input type="submit" name="submit" class="btn btn-info" value="Add FAQ" />
             </form>
         </div>
     </div>
-    <!-- show all FAQs added -->
+    <!-- Se muestran las FAQS agregadas -->
 <div class="row">
     <div class="offset-md-2 col-md-8">
         <table class="table table-bordered">
-            <!-- table heading -->
+          
             <thead>
                 <tr>
                     <th>ID</th>
@@ -81,7 +93,7 @@
                     <th>Acciones</th>
                 </tr>
             </thead>
-            <!-- table body -->
+           
             <tbody>
                 <?php foreach ($faqs as $faq): ?>
                     <tr>
@@ -106,7 +118,7 @@
 </div>
 </div>
 <script>
-    // initialize rich text library
+    // Se inicializa richtext
 window.addEventListener("load", function () {
     $("#answer").richText();
 });

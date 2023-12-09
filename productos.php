@@ -12,6 +12,7 @@ include('config/connection.php');
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
+      <!-- Modal para añadir productos -->
     <div class="modal" id="modal-producto" style="display: none;">
         <div class="body-modal">
             <button class="btn-close" onclick="hide_modal('modal-producto')"><i class="fa fa-window-close-o" aria-hidden="true"></i></button>
@@ -43,6 +44,7 @@ include('config/connection.php');
                 <button onclick="save_product()">Guardar</button>
         </div>
     </div>
+     <!-- Modal para editar productos -->
     <div class="modal" id="modal-producto-edit" style="display: none;">
 		<div class="body-modal">
 			<button class="btn-close" onclick="hide_modal('modal-producto-edit')"><i class="fa fa-times" aria-hidden="true"></i></button>
@@ -94,6 +96,7 @@ include('config/connection.php');
         </div>
         <div class="body-page">
             <h2>Mis productos</h2>
+            <!-- Tabla de productos -->
             <table class="mt10">
                 <thead>
                 <tr>
@@ -106,8 +109,10 @@ include('config/connection.php');
                 </thead>
                 <tbody>
                 <?php
+                 // Consulta para obtener productos
                 $sql="SELECT * from producto";
                 $resultado=mysqli_query($con,$sql);
+                 // Iteración sobre los resultados para mostrar productos en la tabla
                     while ($row=mysqli_fetch_array($resultado)) {
                     echo 
                     '<tr>
@@ -132,18 +137,29 @@ include('config/connection.php');
                 
 
             </table>
+            <!-- Botón para mostrar el modal de agregar productos -->
             <button class="mt10" onclick="show_modal('modal-producto')">Agregar productos</button>
 
         </div>
     </div>
     <script type="text/javascript">
+    /**
+     * Muestra un modal por su ID.
+     * @param {string} id - ID del modal a mostrar.
+     */
     function show_modal(id){
         document.getElementById(id).style.display = "block";
     }
-    
+     /**
+     * Oculta un modal por su ID.
+     * @param {string} id - ID del modal a ocultar.
+     */
     function hide_modal(id){
         document.getElementById(id).style.display = "none";
     }
+     /**
+     * Guarda un producto mediante una solicitud AJAX.
+     */
     function save_product(){
 			let fd=new FormData();
 			fd.append('codigo',document.getElementById('codigo').value);
@@ -174,6 +190,10 @@ include('config/connection.php');
             }
             request.send(fd)
         }
+     /**
+     * Elimina un producto mediante una solicitud AJAX.
+     * @param {number} codpro - Código del producto a eliminar.
+     */
         function delete_products(codpro) {
     var c = confirm("¿Estás seguro de eliminar el producto de código " + codpro + "?");
     if (c) {
@@ -196,6 +216,10 @@ include('config/connection.php');
         request.send(fd);
     }
 }
+/**
+     * Edita la información de un producto mediante una solicitud AJAX.
+     * @param {number} codpro - Código del producto a editar.
+     */
 function edit_products(codpro){
 			let fd=new FormData();
 			fd.append('codpro',codpro);
@@ -218,6 +242,9 @@ function edit_products(codpro){
 			}
 			request.send(fd);
 		}
+     /**
+     * Actualiza la información de un producto mediante una solicitud AJAX.
+     */
         function update_product(){
 			let fd=new FormData();
 			fd.append('codigo',document.getElementById('codigo-e').value);
