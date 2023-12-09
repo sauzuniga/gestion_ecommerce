@@ -3,10 +3,9 @@
 Software complementario de Niche Marketplace, que consiste en un panel de admin desde donde se manejan todas las labores de administrador del sitio web
 ### Funcionalidades
 
-**CRUD de productos:** Se pueden leer, agregar, actualizar, y eliminar productos,  desde el apartado de productos.
-**CRUD de FAQS:** Se pueden leer, agregar, actualizar, y eliminar faqs, desde el apartado de agregar faqs
+**CRUD de productos:** Se pueden leer, agregar, actualizar, y eliminar productos, desde el apartado de productos.  
+**CRUD de FAQS:** Se pueden leer, agregar, actualizar, y eliminar faqs, desde el apartado de agregar faqs  
 **Leer preguntas de los clientes:** Se pueden leer las preguntas que mandan los clientes desde el sitio de ecommerce, para posteriormente agregar las preguntas que mas se repiten como faqs.
-
 
 
 ### Pre-requisitos 📋
@@ -21,10 +20,9 @@ Software complementario de Niche Marketplace, que consiste en un panel de admin 
 
 
 ```
-Abrir el panel de Xampp, y inicializar el servidor apache y el gestor mysql.
-Pegar tanto la carpeta del proyecto como la de su herramienta complementaria, dentro de la carpeta htdocs de Xampp.
-Entrar en su buscador de confianza y poner en la barra de busqueda: http://localhost/gestion_ecommerce-main/
-
+1. Abrir el panel de Xampp, e inicializar el servidor apache y el gestor mysql.
+2. Pegar tanto la carpeta del proyecto como la de su herramienta complementaria, dentro de la carpeta htdocs de Xampp.
+3. Entrar en su buscador de confianza y poner en la barra de búsqueda: http://localhost/gestion_ecommerce-main/
 
 ```
 
